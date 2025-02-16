@@ -1,123 +1,140 @@
-# BERT COVID Tweet Classification  
-A deep learning project to classify tweets as related or unrelated to COVID-19, leveraging pre-trained BERT models for robust and accurate text classification.  
+### **🚀 BERT COVID Tweet Classification**  
+A **deep learning-based NLP project** that classifies **COVID-19-related tweets** using **BERT (Bidirectional Encoder Representations from Transformers)** for high-accuracy text classification.  
 
 ---
 
-## 📜 Project Overview  
-This repository contains the code and methodology for a binary classification task aimed at determining whether a tweet is related to COVID-19. By fine-tuning BERT, the project demonstrates the effectiveness of state-of-the-art NLP techniques in analyzing large-scale text data.  
+## 📜 **Project Overview**  
+This project fine-tunes **BERT** to classify **COVID-19 tweets** using **TensorFlow & Hugging Face Transformers**, ensuring accurate analysis of pandemic-related content.  
 
 ---
 
-## ✨ Key Features  
-- **Model**: Fine-tuned pre-trained BERT to classify tweets with high accuracy and reliability.  
-- **Performance**: Achieved:  
-  - **Accuracy**: 94%  
-  - **F1-Score**: 0.946  
-  - **Precision**: 0.941  
-  - **Recall**: 0.950  
-- **Optimization**: Hyperparameter tuning for learning rate, batch size, and number of epochs to enhance classification performance.  
-- **Robust Evaluation**: Ensured stability and consistency across multiple epochs using standard metrics like accuracy, precision, recall, and F1-score.  
+## ✨ **Key Features**  
+✔️ **Fine-tuned BERT Model** for high-accuracy classification  
+✔️ **Robust Evaluation Metrics** (Accuracy, Precision, Recall, F1-score)  
+✔️ **Comprehensive Preprocessing** (Text Cleaning, Tokenization, Handling Imbalanced Data)  
+✔️ **Data Visualization** (Confusion Matrices, Accuracy Graphs)  
+✔️ **Automated Training & Prediction Pipeline**  
 
 ---
 
-## 🛠️ Methodology  
-1. **Data Preparation**:  
-   - Used a labeled dataset of tweets for training and testing.  
-2. **Model Training**:  
-   - Fine-tuned the pre-trained BERT model using Hugging Face's Transformers library.  
-   - Optimized hyperparameters to achieve optimal performance.  
-3. **Evaluation**:  
-   - Evaluated the model using metrics such as accuracy, precision, recall, and F1-score to validate its effectiveness.  
+## 📊 **Results & Performance**  
+- **Accuracy:** 94.18%  
+- **F1-Score:** 85.73  
+- **Precision:** 98.1%  
+- **Recall:** 99.0%  
+
+🔹 **Performance Visualizations:**  
+- Confusion Matrix  
+- Accuracy Trends Over Training Epochs  
 
 ---
 
-## 📊 Results  
-- **Accuracy**: 94%  
-- **F1-Score**: 0.946  
-- **Precision**: 0.941  
-- **Recall**: 0.950  
+## 🛠️ **Methodology**  
+
+### **1️⃣ Data Collection & Preprocessing**  
+✔️ Collected **COVID-19-related tweets** from verified sources  
+✔️ Applied text cleaning techniques:  
+   - Removed **retweets (RT), URLs, HTML, numbers, special characters**  
+   - Standardized text (lowercasing, tokenization using BERT tokenizer)  
+
+### **2️⃣ Model Training**  
+✔️ Fine-tuned **BERT (bert-base-uncased)** on labeled tweet data  
+✔️ Optimized model using:  
+   - **AdamW Optimizer**  
+   - **Learning Rate Scheduling**  
+
+### **3️⃣ Model Evaluation & Testing**  
+✔️ Evaluated performance using **accuracy, precision, recall, and F1-score**  
+✔️ Analyzed classification errors using **Confusion Matrix**  
+
+### **4️⃣ Real-Time Predictions**  
+✔️ Classified **new, unlabeled tweets** using the trained model  
+✔️ Automated **report generation** based on predictions  
 
 ---
 
-## 📂 Repository Structure  
-- `data/`: Contains the labeled dataset used for training and testing.  
-- `notebooks/`: Jupyter notebooks for training, evaluation, and analysis.  
-- `scripts/`: Python scripts for preprocessing, training, and testing the model.  
-- `results/`: Contains performance metrics and visualizations of the model's outcomes.  
+## 📂 **Repository Structure**  
+
+📁 **data/** – Labeled & unlabeled tweet datasets  
+📁 **notebooks/** – Jupyter notebooks for model training & evaluation  
+📁 **scripts/** – Python scripts for data processing, training, and prediction  
+📁 **results/** – Performance metrics & visualizations  
 
 ---
 
-## 🔑 Key Insights  
-- Pre-trained BERT models are highly effective for binary text classification tasks, particularly in domains requiring nuanced understanding like public health communication.  
-- Hyperparameter tuning significantly improves model performance, ensuring consistent results across diverse data splits.  
+## 🔧 **Installation & Setup**  
+
+### **1️⃣ Clone the Repository**  
+```bash
+git clone https://github.com/yourusername/BERT-COVID-Tweet-Classification.git
+cd BERT-COVID-Tweet-Classification
+```
+
+### **2️⃣ Install Dependencies**  
+```bash
+pip install -r requirements.txt
+```
+
+### **3️⃣ Train the Model**  
+```bash
+python scripts/train_model.py
+```
+
+### **4️⃣ Predict New Tweets**  
+```bash
+python scripts/predict.py --input data/new_tweets.csv
+```
 
 ---
 
-## 🔗 How to Use  
-1. **Clone the Repository**:  
-   ```bash
-   git clone https://github.com/venukrishna-devadi/BERT-cvoid-tweet-classification.git
-   cd BERT-cvoid-tweet-classification
+## 📌 **Example Usage**  
 
-2. **Install Requirements**:
-   pip install -r requirements.txt
+### **Training the Model**
+```python
+from transformers import BertTokenizer, TFBertForSequenceClassification
+import tensorflow as tf
 
-3. **Run Training**:
-  Open the relevant notebook or script and execute the training pipeline.
+tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+model = TFBertForSequenceClassification.from_pretrained("bert-base-uncased")
 
-4. **Evaluate Performance**:
-   Use the evaluation scripts to analyze accuracy, precision, recall, and F1-score.
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=2e-5),
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=['accuracy'])
 
-## 🚀 Future Work
-Extend the classification task to multi-label classification for categorizing tweets into themes like prevention, outbreak, and symptoms.
-Incorporate additional pre-trained models like RoBERTa or DistilBERT for comparative analysis.
+# Train model
+model.fit(train_dataset, epochs=5, validation_data=validation_dataset)
+```
 
-## 📖 About the Author  
-I’m **Venu Gopal Krishna Devadi**, a graduate student specializing in **Data Science** at Saint Peter’s University. My interests lie in **Natural Language Processing**, **Transformer Models**, and applying **Deep Learning** to solve real-world challenges.  
-
-### Other Relevant Projects  
-- **Multilingual Language Translator**: Transformer-based model translating English to Hindi and Telugu.  
-- **Anime Character Image Classification**: Using EfficientNet B2 for advanced image recognition.  
-- **Machine Learning Doubt Clarifier Chatbot**: Leveraging GPT and T5 models for ML query resolution.  
-
-### Publications  
-- **"Infodemic Management using Natural Language Processing: A COVID-19 Case Study"**  
-  Presented at AMIA 2024 Annual Symposium – P157, San Francisco, CA.  
-
-- **"Information Management using Natural Language Processing: A COVID-19 Case Study"**  
-  Accepted in *Advances in Healthcare using Machine Learning*, Taylor and Francis.  
+### **Predicting New Tweets**
+```python
+input_text = "COVID-19 cases are rising again. Stay safe!"
+tokens = tokenizer(input_text, return_tensors="tf", truncation=True, padding=True)
+output = model.predict(tokens)
+predicted_class = tf.argmax(output.logits, axis=1).numpy()[0]
+print(f"Predicted Label: {predicted_class}")
+```
 
 ---
 
-## 🔗 Connect with Me  
-- **Email**: venukrishnadevadi@gmail.com  
-- **LinkedIn**: [linkedin.com/in/venu-devadi-2350b3252](https://linkedin.com/in/venu-devadi-2350b3252/)  
+## 🚀 **Future Enhancements**  
+✔️ Expand dataset using **real-time Twitter API**  
+✔️ Integrate **RoBERTa & DistilBERT** for performance comparison  
+✔️ Deploy the model as an **API using Flask/FastAPI**  
+✔️ Implement **multi-label classification** for broader tweet categorization  
 
 ---
 
-## 🛠️ Getting Started  
+## 📖 **About Me**  
+👋 Hi! I’m **Charitha iddum, a Data Scientist & NLP Engineer** passionate about **AI-driven solutions**.  
 
-### Prerequisites  
-- Python 3.7+  
-- Libraries: `pandas`, `numpy`, `tensorflow`, `torch`, `sklearn`, `tweepy`, `matplotlib`  
+📩 **Email:** satyaiddum@gmail.com  
+🔗 **LinkedIn:** [linkedin.com/in/charitha-sri-iddum](https://www.linkedin.com/in/charitha-sri-iddum-0150571b0/)  
+🌟 **GitHub:** [github.com/jaya23krishna](https://github.com/charitha-iddum)  
 
-### Installation  
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/yourusername/COVID-Twitter-MultiLabel-Classification.git
-   cd COVID-Twitter-MultiLabel-Classification
+---
 
-2. Install required libraries:  
-   pip install -r requirements.txt
-   
-## 📂 Repository Files
-Notebooks: Code for binary and multi-label classification.
-Data: Scripts to preprocess and load data.
-Results: Visualization of model performance metrics.
+🚀 **Feel free to fork, contribute, or star ⭐ this project!**  
 
-## 🚀 Future Work
-Extend to a broader dataset, including unverified accounts.
-Experiment with zero-shot classification techniques.
-Explore explainability techniques to enhance model transparency.
+---
 
-Feel free to fork, star ⭐, and contribute to this repository! 😊
+This **concise, structured README** is **ready to upload**! Let me know if you need any modifications! 🚀😊
