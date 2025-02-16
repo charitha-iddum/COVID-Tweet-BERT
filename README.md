@@ -129,7 +129,7 @@ print(f"Predicted Label: {predicted_class}")
 
 📩 **Email:** satyaiddum@gmail.com  
 🔗 **LinkedIn:** [linkedin.com/in/charitha-sri-iddum](https://www.linkedin.com/in/charitha-sri-iddum-0150571b0/)  
-🌟 **GitHub:** [github.com/jaya23krishna](https://github.com/charitha-iddum)  
+🌟 **GitHub:** [github.com/charitha-iddum](https://github.com/charitha-iddum)  
 
 ---
 
